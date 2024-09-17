@@ -1,14 +1,19 @@
 package com.shopcollection.shopcollection.service.product;
 
+import com.shopcollection.shopcollection.dto.ImageDto;
+import com.shopcollection.shopcollection.dto.ProductDto;
 import com.shopcollection.shopcollection.exception.ProductNotFoundException;
 import com.shopcollection.shopcollection.exception.ResourceNotFoundException;
 import com.shopcollection.shopcollection.model.Category;
+import com.shopcollection.shopcollection.model.Image;
 import com.shopcollection.shopcollection.model.Product;
 import com.shopcollection.shopcollection.repository.CategoryRepository;
+import com.shopcollection.shopcollection.repository.ImageRepository;
 import com.shopcollection.shopcollection.repository.ProductRepository;
 import com.shopcollection.shopcollection.request.AddProductRequest;
 import com.shopcollection.shopcollection.request.ProductUpdateRequest;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +25,7 @@ public class ProductService implements IProductService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+
 
     @Override
     public Product addProduct(AddProductRequest request) {
@@ -47,13 +53,13 @@ public class ProductService implements IProductService {
     @Override
     public Product getProductById(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
     }
 
     @Override
     public void deleteProductById(Long id) {
         productRepository.findById(id).ifPresentOrElse(productRepository::delete, () -> {
-                throw new ProductNotFoundException("Product not found");
+                throw new ResourceNotFoundException("Product not found");
         });
     }
 
@@ -112,4 +118,6 @@ public class ProductService implements IProductService {
     public Long countProductsByBrandAndName(String brand, String name) {
         return productRepository.countByBrandAndName(brand, name);
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.shopcollection.shopcollection.service.product;
 
+import com.shopcollection.shopcollection.dto.ProductDto;
 import com.shopcollection.shopcollection.model.Product;
 import com.shopcollection.shopcollection.request.AddProductRequest;
 import com.shopcollection.shopcollection.request.ProductUpdateRequest;
@@ -19,5 +20,7 @@ public interface IProductService {
     List<Product> getProductsByName(String name);
     List<Product> getProductsByBrandAndName(String category, String name);
     Long countProductsByBrandAndName(String brand, String name);
+
+
 
 }
