@@ -1,2 +1,13 @@
-package com.shopcollection.shopcollection.dto;public class CartDto {
+package com.shopcollection.shopcollection.dto;
+
+import lombok.Data;
+
+import java.math.BigDecimal;
+import java.util.Set;
+
+@Data
+public class CartDto {
+    private Long cartId;
+    private Set<CartItemDto> items;
+    private BigDecimal totalAmount;
 }

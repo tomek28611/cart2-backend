@@ -1,2 +1,11 @@
-package com.shopcollection.shopcollection.request;public class CreateUserRequest {
+package com.shopcollection.shopcollection.request;
+
+import lombok.Data;
+
+@Data
+public class CreateUserRequest {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
 }

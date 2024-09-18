@@ -1,2 +1,10 @@
-package com.shopcollection.shopcollection.dto;public class CartItemDto {
+package com.shopcollection.shopcollection.dto;
+
+import java.math.BigDecimal;
+
+public class CartItemDto {
+    private Long itemId;
+    private Integer quantity;
+    private BigDecimal unitPrice;
+    private ProductDto product;
 }
